@@ -1,6 +1,6 @@
 <?php
 
-class Tx_ThemesAdapterTemplavoilaframework_Domain_Model_Skin extends Tx_Themes_Domain_Model_Skin {
+class Tx_ThemesAdapterTemplavoilaframework_Domain_Model_Theme extends Tx_Themes_Domain_Model_Theme {
 	/**
 	 * Constructs a new Skin
 	 *
