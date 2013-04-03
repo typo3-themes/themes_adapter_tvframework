@@ -56,8 +56,8 @@ class Tx_ThemesAdapterTemplavoilaframework_Domain_Model_Theme extends Tx_Themes_
 				array(
 					'constants'=>
 						t3lib_div::getUrl($tvframeworkCompatBasePath . 'core_constants.ts') .
-						#chr(10) . 'templavoila_framework.skinPath = ' . 'EXT:' . $this->getExtensionName() . '/',
-						chr(10) . 'templavoila_framework.skinPath = ' . t3lib_extMgm::siteRelPath($this->getExtensionName()),
+						chr(10) . 'templavoila_framework.skinPath = ' . t3lib_extMgm::siteRelPath($this->getExtensionName()).
+						chr(10) . 'templavoila_framework.corePath = ' . t3lib_extMgm::siteRelPath('themes_adapter_templavoilaframework').'Resources/Public/',
 					'config'=>		t3lib_div::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapBefore.ts'),
 					'editorcfg'=>	'',
 					'include_static'=>	'',
