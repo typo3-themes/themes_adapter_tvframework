@@ -39,3 +39,5 @@ moduleTitleTag = h3
 
 # This sets the header level for normal headers inside a framed module
 defaultHeaderInsideModule = {$content.defaultHeaderType}
+
+containerWidth = 1170
