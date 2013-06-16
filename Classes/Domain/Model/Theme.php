@@ -1,6 +1,6 @@
 <?php
 
-class Tx_ThemesAdapterTemplavoilaframework_Domain_Model_Theme extends Tx_Themes_Domain_Model_Theme {
+class Tx_ThemesAdapterTvframework_Domain_Model_Theme extends Tx_Themes_Domain_Model_Theme {
 	/**
 	 * Constructs a new Skin
 	 *
@@ -36,7 +36,7 @@ class Tx_ThemesAdapterTemplavoilaframework_Domain_Model_Theme extends Tx_Themes_
 	}
 
 	public function getTSConfig() {
-		$buffer = t3lib_div::getUrl(t3lib_extMgm::extPath('themes_adapter_templavoilaframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/pagets.ts')
+		$buffer = t3lib_div::getUrl(t3lib_extMgm::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/pagets.ts')
 			. "\n\n"
 			. parent::getTSConfig();
 		return $buffer;
@@ -49,7 +49,7 @@ class Tx_ThemesAdapterTemplavoilaframework_Domain_Model_Theme extends Tx_Themes_
 	 * @return	void
 	 */
 	public function addTypoScriptForFe(&$params, &$pObj) {
-		$tvframeworkCompatBasePath = t3lib_extMgm::extPath('themes_adapter_templavoilaframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/';
+		$tvframeworkCompatBasePath = t3lib_extMgm::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/';
 
 		// include templavoila wrapper templates, with core templates
 			$pObj->processTemplate(
@@ -57,7 +57,7 @@ class Tx_ThemesAdapterTemplavoilaframework_Domain_Model_Theme extends Tx_Themes_
 					'constants'=>
 						t3lib_div::getUrl($tvframeworkCompatBasePath . 'core_constants.ts') .
 						chr(10) . 'templavoila_framework.skinPath = ' . t3lib_extMgm::siteRelPath($this->getExtensionName()).
-						chr(10) . 'templavoila_framework.corePath = ' . t3lib_extMgm::siteRelPath('themes_adapter_templavoilaframework').'Resources/Public/',
+						chr(10) . 'templavoila_framework.corePath = ' . t3lib_extMgm::siteRelPath('themes_adapter_tvframework').'Resources/Public/',
 					'config'=>		t3lib_div::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapBefore.ts'),
 					'editorcfg'=>	'',
 					'include_static'=>	'',
