@@ -1,6 +1,6 @@
 <?php
 
-class Tx_ThemesAdapterTvframework_Domain_Model_Theme extends Tx_Themes_Domain_Model_Theme {
+class Tx_ThemesAdapterTvframework_Domain_Model_Theme extends \KayStrobach\Themes\Domain\Model\Theme {
 	/**
 	 * Constructs a new Skin
 	 *
