@@ -1,6 +1,6 @@
 <?php
 
-class Tx_ThemesAdapterTvframework_Domain_Model_Theme extends \KayStrobach\Themes\Domain\Model\Theme {
+class Tx_ThemesAdapterTvframework_Domain_Model_Theme extends KayStrobach\Themes\Domain\Model\Theme {
 	/**
 	 * Constructs a new Skin
 	 *
@@ -12,31 +12,30 @@ class Tx_ThemesAdapterTvframework_Domain_Model_Theme extends \KayStrobach\Themes
 		/**
 		 * set needed path variables
 		 */
-		$path                          = t3lib_extMgm::extPath($this->getExtensionName()) . 'typoscript/';
+		$path                          = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($this->getExtensionName()) . 'typoscript/';
 		$this->pathTyposcript          = $path . 'skin_typoscript.ts';
 		$this->pathTyposcriptConstants = $path . 'skin_constants.ts';
 		$this->pathTSConfig            = $path . 'skin_tsconfig.ts';
 
-		if(t3lib_extMgm::isLoaded('templavoila_framework')) {
+		if(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('templavoila_framework')) {
 			$skinInfo = tx_templavoilaframework_lib::getSkinInfo('EXT:' . $extensionName);
 			$this->title        = $skinInfo['title'];
 			$this->description  = $skinInfo['description'];
-			$this->previewImage = $skinInfo['icon'];
+			$this->previewImage = 'EXT:' . str_replace('../typo3conf/ext/', '', $skinInfo['icon']);
 		} else {
-			if(is_file(t3lib_extMgm::extPath($extensionName) . 'screenshot.gif')) {
-				$this->previewImage = t3lib_extMgm::extRelPath($extensionName) . 'screenshot.gif';
-			} elseif(is_file(t3lib_extMgm::extPath($extensionName) . 'screenshot.jpg')) {
-				$this->previewImage = t3lib_extMgm::extRelPath($extensionName) . 'screenshot.jpg';
-			} elseif(is_file(t3lib_extMgm::extPath($extensionName) . 'screenshot.png')) {
-				$this->previewImage = t3lib_extMgm::extRelPath($extensionName) . 'screenshot.png';
-			} else {
-				$this->previewImage = t3lib_extMgm::extRelPath($extensionName) . 'ext_icon.gif';
+			$this->previewImage = 'EXT:' . $extensionName . '/ext_icon.gif';
+			if(is_file(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($extensionName) . 'screenshot.gif')) {
+				$this->previewImage = 'EXT:' . $extensionName . '/screenshot.gif';
+			} elseif(is_file(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($extensionName) . 'screenshot.jpg')) {
+				$this->previewImage = 'EXT:' .$extensionName . '/screenshot.jpg';
+			} elseif(is_file(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($extensionName) . 'screenshot.png')) {
+				$this->previewImage = 'EXT:' . $extensionName . '/screenshot.png';
 			}
 		}
 	}
 
 	public function getTSConfig() {
-		$buffer = t3lib_div::getUrl(t3lib_extMgm::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/pagets.ts')
+		$buffer = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/pagets.ts')
 			. "\n\n"
 			. parent::getTSConfig();
 		return $buffer;
@@ -48,17 +47,17 @@ class Tx_ThemesAdapterTvframework_Domain_Model_Theme extends \KayStrobach\Themes
 	 * @param	object		Reference back to parent object, t3lib_tstemplate or one of its subclasses.
 	 * @return	void
 	 */
-	public function addTypoScriptForFe(&$params, &$pObj) {
-		$tvframeworkCompatBasePath = t3lib_extMgm::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/';
+	public function addTypoScriptForFe(&$params, TYPO3\CMS\Core\TypoScript\TemplateService &$pObj, $extensions=[], $features=[]) {
+		$tvframeworkCompatBasePath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/';
 
 		// include templavoila wrapper templates, with core templates
 			$pObj->processTemplate(
 				array(
 					'constants'=>
-						t3lib_div::getUrl($tvframeworkCompatBasePath . 'core_constants.ts') .
-						chr(10) . 'templavoila_framework.skinPath = ' . t3lib_extMgm::siteRelPath($this->getExtensionName()).
-						chr(10) . 'templavoila_framework.corePath = ' . t3lib_extMgm::siteRelPath('themes_adapter_tvframework').'Resources/Public/',
-					'config'=>		t3lib_div::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapBefore.ts'),
+						\TYPO3\CMS\Core\Utility\GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_constants.ts') .
+						chr(10) . 'templavoila_framework.skinPath = ' . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath($this->getExtensionName()).
+						chr(10) . 'templavoila_framework.corePath = ' . \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::siteRelPath('themes_adapter_tvframework').'Resources/Public/',
+					'config'=>		\TYPO3\CMS\Core\Utility\GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapBefore.ts'),
 					'editorcfg'=>	'',
 					'include_static'=>	'',
 					'include_static_file'=>	'',
@@ -79,7 +78,7 @@ class Tx_ThemesAdapterTvframework_Domain_Model_Theme extends \KayStrobach\Themes
 			$pObj->processTemplate(
 				array(
 					'constants'=>	'',
-					'config'=>		t3lib_div::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapEnd.ts'),
+					'config'=>		\TYPO3\CMS\Core\Utility\GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapEnd.ts'),
 					'editorcfg'=>	'',
 					'include_static'=>	'',
 					'include_static_file'=>	'',

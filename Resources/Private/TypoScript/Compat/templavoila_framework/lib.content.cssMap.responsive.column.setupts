@@ -1,0 +1,66 @@
+lib.content.cssMap.responsive.column {
+	
+	equalHeight {
+		medium-equalHeight = spanheight
+		small-equalHeight = spanheight
+		extrasmall-equalHeight = spanheight
+		large-equalHeight = spanheight
+	}
+	
+	#Medium Size Width
+	medium-width-1 = span1
+	medium-width-2 = span2
+	medium-width-3 = span3
+	medium-width-4 = span4
+	medium-width-5 = span5
+	medium-width-6 = span6
+	medium-width-7 = span7
+	medium-width-8 = span8
+	medium-width-9 = span9
+	medium-width-10 = span10
+	medium-width-11 = span11
+	medium-width-12 = span12
+
+	#Small Size Width
+	small-width-1 = span1
+	small-width-2 = span2
+	small-width-3 = span3
+	small-width-4 = span4
+	small-width-5 = span5
+	small-width-6 = span6
+	small-width-7 = span7
+	small-width-8 = span8
+	small-width-9 = span9
+	small-width-10 = span10
+	small-width-11 = span11
+	small-width-12 = span12
+
+	#Extra Small Size Width
+	extrasmall-width-1 = span1
+	extrasmall-width-2 = span2
+	extrasmall-width-3 = span3
+	extrasmall-width-4 = span4
+	extrasmall-width-5 = span5
+	extrasmall-width-6 = span6
+	extrasmall-width-7 = span7
+	extrasmall-width-8 = span8
+	extrasmall-width-9 = span9
+	extrasmall-width-10 = span10
+	extrasmall-width-11 = span11
+	extrasmall-width-12 = span12
+
+	#Large Size Width
+	large-width-1 = span1
+	large-width-2 = span2
+	large-width-3 = span3
+	large-width-4 = span4
+	large-width-5 = span5
+	large-width-6 = span6
+	large-width-7 = span7
+	large-width-8 = span8
+	large-width-9 = span9
+	large-width-10 = span10
+	large-width-11 = span11
+	large-width-12 = span12
+
+}

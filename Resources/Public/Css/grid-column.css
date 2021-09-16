@@ -1,0 +1,70 @@
+div.row {
+  clear:both;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 2rem;
+}
+.row > div.span1 {
+  grid-column: span 1;
+}
+.row > div.span2 {
+  grid-column: span 2;
+}
+.row > div.span3 {
+  grid-column: span 3;
+}
+.row > div.span4 {
+  grid-column: span 4;
+}
+.row > div.span5 {
+  grid-column: span 5;
+}
+.row > div.span6 {
+  grid-column: span 6;
+}
+.row > div.span7 {
+  grid-column: span 7;
+}
+.row > div.span8 {
+  grid-column: span 8;
+}
+.row > div.span9 {
+  grid-column: span 9;
+}
+.row > div.span10 {
+  grid-column: span 10;
+}
+.row > div.span11 {
+  grid-column: span 11;
+}
+.row > div.span12 {
+  grid-column: span 12;
+}
+img {
+  max-width: 100%;
+  width: auto;
+  height:auto;
+}
+iframe {
+  width: 100%;
+  border: none;
+}
+
+.csc-textpic-center-inner, .csc-textpic-below, .csc-textpic-above {
+  display: table;
+  border-spacing: 0.5em;
+  width: 100%;
+}
+.csc-textpic-center-inner .csc-textpic-imagerow, .csc-textpic-below .csc-textpic-imagerow, .csc-textpic-above .csc-textpic-imagerow{
+  display: table-row;
+}
+div.csc-textpic-imagecolumn {
+  float: none!important;
+  display: table-cell;
+}
+.csc-textpic-intext-left .csc-textpic-imagewrap {
+  float:left;
+  margin-right: 10px;
+  margin-bottom: 0px;
+  margin-top: 0;
+} 

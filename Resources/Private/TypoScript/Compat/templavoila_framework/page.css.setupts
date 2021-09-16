@@ -1,0 +1,6 @@
+page.includeCSS {
+    file949 = typo3conf/ext/themes_adapter_tvframework/Resources/Public/Css/grid-column.css
+    file949.disableCompression = 1
+    file949.excludeFromConcatenation = 1
+    file949.forceOnTop = 1
+}

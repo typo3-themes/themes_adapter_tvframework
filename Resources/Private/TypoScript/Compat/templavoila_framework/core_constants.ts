@@ -1,3 +1,5 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_gridelements/Configuration/TypoScript/constants.txt">
+
 # cat=Site Constants/general/a; type=string; label=LLL:EXT:themes_adapter_tvframework/Resources/Private/Language/locallang-constants.xml:templavoila_framework.constants.siteTitle
 siteTitle =
 
@@ -41,3 +43,26 @@ moduleTitleTag = h3
 defaultHeaderInsideModule = {$content.defaultHeaderType}
 
 containerWidth = 1170
+
+lib.content.cssMap.responsive {
+    row {
+        default-row = row
+    }
+    column {
+        default-2-column = default-2-column
+        default-3-column = default-3-column
+        default-4-column = default-4-column
+    }
+}
+
+themes.languages.current.isoCodeHtml = de
+themes.languages.current.isoCodeShort = de
+themes.configuration.meta.robots = all
+themes.configuration.meta.revisitAfter = 10 days
+themes.configuration.meta.applicationName = SchulCMS
+themes.configuration.meta.defaults.abstract = 
+themes.configuration.meta.defaults.keywords = 
+themes.configuration.meta.defaults.author = 
+themes.configuration.meta.defaults.authorEmail = abuse@www.sn.schule.de
+themes.configuration.meta.defaults.description = 
+themes.configuration.meta.copyright = see author

@@ -1575,11 +1575,19 @@ page {
 [global]
 
 # Let TemplaVoila render the page content.
-page.10 = USER
-page.10.userFunc = tx_templavoila_pi1->main_page
+# page.10 = USER
+# page.10.userFunc = tx_templavoila_pi1->main_page
 
 # Temporarily disabled - See http://bugs.typo3.org/view.php?id=17890
 # page.10.renderUnmapped = false
 
-page.10.disableExplosivePreview = 1
-plugin.tx_templavoila_pi1.disableExplosivePreview = 1
+# page.10.disableExplosivePreview = 1
+# plugin.tx_templavoila_pi1.disableExplosivePreview = 1
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_adapter_tvframework/Resources/Private/TypoScript/Compat/templavoila_framework/lib.content.cssMap.behaviour.setupts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_adapter_tvframework/Resources/Private/TypoScript/Compat/templavoila_framework/lib.content.cssMap.responsive.column.setupts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_adapter_tvframework/Resources/Private/TypoScript/Compat/templavoila_framework/lib.content.cssMap.responsive.row.setupts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_adapter_tvframework/Resources/Private/TypoScript/Compat/templavoila_framework/lib.content.cssMap.responsive.setupts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_adapter_tvframework/Resources/Private/TypoScript/Compat/templavoila_framework/lib.content.cssMap.variants.setupts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_adapter_tvframework/Resources/Private/TypoScript/Compat/templavoila_framework/lib.content.cssMap.variants.singleColumnHeaderFooter.setupts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_adapter_tvframework/Resources/Private/TypoScript/Compat/templavoila_framework/page.css.setupts">
