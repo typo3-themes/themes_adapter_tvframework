@@ -15,6 +15,6 @@
     "classmap": ["Classes/"]
   },
   "replace": {
-    "themes_adapter_framework": "self.version",
+    "themes_adapter_framework": "self.version"
   }
 }
