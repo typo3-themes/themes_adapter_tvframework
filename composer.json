@@ -1,0 +1,20 @@
+{
+  "name": "typo3-themes/themes-adapter-framework",
+  "type": "typo3-cms-extension",
+  "description": "TYPO3 THEMES Adapter for TV Framework",
+  "homepage": "http://typo3-themes.org",
+  "license": ["GPL-2.0+"],
+  "keywords": ["TYPO3 CMS", "TYPO3 THEMES", "THEMES", "THEMES", "FLUID", "CUSTOMIZE"],
+  "require": {
+    "typo3/cms-core": "*"
+  },
+  "support": {
+    "issues": "https://github.com/typo3-themes/themes_adapter_tvframework/issues"
+  },
+  "autoload": {
+    "classmap": ["Classes/"]
+  },
+  "replace": {
+    "themes_adapter_framework": "self.version",
+  }
+}
