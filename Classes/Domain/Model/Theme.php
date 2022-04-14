@@ -1,6 +1,8 @@
 <?php
 
-class Tx_ThemesAdapterTvframework_Domain_Model_Theme extends KayStrobach\Themes\Domain\Model\Theme {
+namespace KayStrobach\Themes\Adapter\TvFramework\Domain\Model;
+
+class Theme extends \KayStrobach\Themes\Domain\Model\Theme {
 	/**
 	 * Constructs a new Skin
 	 *
@@ -47,7 +49,7 @@ class Tx_ThemesAdapterTvframework_Domain_Model_Theme extends KayStrobach\Themes\
 	 * @param	object		Reference back to parent object, t3lib_tstemplate or one of its subclasses.
 	 * @return	void
 	 */
-	public function addTypoScriptForFe(&$params, TYPO3\CMS\Core\TypoScript\TemplateService &$pObj, $extensions=[], $features=[]) {
+	public function addTypoScriptForFe(&$params, \TYPO3\CMS\Core\TypoScript\TemplateService &$pObj, $extensions=[], $features=[]) {
 		$tvframeworkCompatBasePath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/';
 
 		// include templavoila wrapper templates, with core templates

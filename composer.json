@@ -12,7 +12,8 @@
     "issues": "https://github.com/typo3-themes/themes_adapter_tvframework/issues"
   },
   "autoload": {
-    "classmap": ["Classes/"]
+    "classmap": ["Classes/"],
+    "psr-4": { "KayStrobach\\Themes\\Adapter\\TvFramework\\": "Classes/"}
   },
   "replace": {
     "themes_adapter_tvframework": "self.version"

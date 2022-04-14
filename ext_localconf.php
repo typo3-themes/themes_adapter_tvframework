@@ -1,4 +1,4 @@
 <?php
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['Tx_Themes_Domain_Repository_ThemeRepository']['init'][]
-	= 'Tx_ThemesAdapterTvframework_Hooks_Tx_Themes_Domain_Repository_ThemeRepository_Hook->init';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][\KayStrobach\Themes\Domain\Repository\ThemeRepository::class]['init'][]
+	= \KayStrobach\Themes\Adapter\TvFramework\Hooks\ThemeRepositoryHook::class . '->init';
