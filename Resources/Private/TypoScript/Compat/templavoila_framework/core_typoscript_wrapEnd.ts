@@ -82,7 +82,7 @@ contentBlock-2 {
 
 menu-block = COA
 menu-block {
-	
+
 }
 
 feature = COA
@@ -108,7 +108,7 @@ generatedContent-1 {
 	}
 	20 = CONTENT
 	20 {
-	    
+
 	    table = tt_content
 	    select.pidInList = {$contentSource}
 	    select.languageField = sys_language_uid
