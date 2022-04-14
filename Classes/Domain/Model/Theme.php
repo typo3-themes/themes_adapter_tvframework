@@ -2,7 +2,10 @@
 
 namespace KayStrobach\Themes\Adapter\TvFramework\Domain\Model;
 
+use TYPO3\CMS\Core\TypoScript\TemplateService;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\PathUtility;
 
 class Theme extends \KayStrobach\Themes\Domain\Model\Theme
 {
@@ -42,7 +45,7 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
 
     public function getTSConfig()
     {
-        $buffer = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl(ExtensionManagementUtility::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/pagets.ts')
+        $buffer = GeneralUtility::getUrl(ExtensionManagementUtility::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/pagets.ts')
             . "\n\n"
             . parent::getTSConfig();
         return $buffer;
@@ -51,13 +54,15 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
     /**
      * Includes static template records (from static_template table) and static template files (from extensions) for the input template record row.
      *
-     * @param array        Array of parameters from the parent class.  Includes idList, templateId, pid, and row.
      * @param object        Reference back to parent object, t3lib_tstemplate or one of its subclasses.
+     * @param TemplateService $pObj
+     * @param array $extensions
+     * @param array $features
      * @return    void
      */
     public function addTypoScriptForFe(
         &$params,
-        \TYPO3\CMS\Core\TypoScript\TemplateService &$pObj,
+        TemplateService &$pObj,
         $extensions = [],
         $features = []
     ) {
@@ -65,18 +70,18 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
 
         // include templavoila wrapper templates, with core templates
         $pObj->processTemplate(
-            array(
+            [
                 'constants' =>
-                    \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_constants.ts') .
-                    chr(10) . 'templavoila_framework.skinPath = ' . ExtensionManagementUtility::siteRelPath($this->getExtensionName()) .
-                    chr(10) . 'templavoila_framework.corePath = ' . ExtensionManagementUtility::siteRelPath('themes_adapter_tvframework') . 'Resources/Public/',
-                'config' => \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapBefore.ts'),
+                    GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_constants.ts') .
+                    PHP_EOL . 'templavoila_framework.skinPath = ' . PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath($this->getExtensionName())) .
+                    PHP_EOL . 'templavoila_framework.corePath = ' . PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('themes_adapter_tvframework')) . 'Resources/Public/',
+                'config' => GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapBefore.ts'),
                 'editorcfg' => '',
                 'include_static' => '',
                 'include_static_file' => '',
                 'title' => 'themes_tvf_wrapBefore',
                 'uid' => md5('themes_tvf_wrapBefore')
-            ),
+            ],
             $params['idList'] . ',themes_tvf_wrapBefore',
             $params['pid'],
             'themes_tvf_wrapBefore',
@@ -91,7 +96,7 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
         $pObj->processTemplate(
             array(
                 'constants' => '',
-                'config' => \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapEnd.ts'),
+                'config' => GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapEnd.ts'),
                 'editorcfg' => '',
                 'include_static' => '',
                 'include_static_file' => '',
