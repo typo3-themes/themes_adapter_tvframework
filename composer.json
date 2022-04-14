@@ -16,5 +16,10 @@
   },
   "replace": {
     "themes_adapter_tvframework": "self.version"
-  }
+  },
+  "extra": {
+      "typo3/cms": {
+         "extension-key": "themes_adapter_tvframework"
+      }
+   }
 }
