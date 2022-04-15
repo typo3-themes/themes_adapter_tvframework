@@ -125,37 +125,27 @@ generatedContent-1 {
 	}
 }
 
+plugin.tx_themes {
+  view {
+    templateRootPaths {
+      400 = EXT:themes_adapter_tvframework/Resources/Private/Templates/
+      600 = EXT:skin_sbs_picturenav/fluid/
+    }
+    layoutRootPaths {
+      400 = EXT:themes_adapter_tvframework/Resources/Private/Layouts/
+    }
+    partialRootPaths {
+      400 = EXT:themes_adapter_tvframework/Resources/Private/Partials/
+    }
+  }
+}
+
 
 page {
 	# add jquery to page
     10 = USER
     10.userFunc = tx_t3jquery->addJqJS
 
-	100 = FLUIDTEMPLATE
-	100 {
-		template = FILE
-		template {
-			file = TEXT
-			file {
-				data = levelfield:-2, backend_layout_next_level, slide
-				override.field = backend_layout
-				required = 1
-				split {
-					token = pagets__
-					cObjNum = 1
-					1.current = 1
-				}
-				ifEmpty = Default
-				wrap = EXT:themes_adapter_tvframework/Resources/Private/Templates/|.html
-			}
-		}
-		layoutRootPaths {
-			10 = EXT:themes_adapter_tvframework/Resources/Private/Layouts
-		}
-		partialRootPaths {
-			10 = EXT:themes_adapter_tvframework/Resources/Private/Partials
-		}
-	}
 	# header
 	#20 < preCodeHeader
 	#23 < header
