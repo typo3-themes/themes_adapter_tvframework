@@ -94,7 +94,9 @@ feature {
 		select.where   = colPos = 3
 	}
 }
-feature >
+
+feature  = TEXT
+
 
 generatedContent-1 = COA
 generatedContent-1 {
