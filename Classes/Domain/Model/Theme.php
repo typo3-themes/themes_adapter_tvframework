@@ -73,8 +73,8 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
             [
                 'constants' =>
                     GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_constants.ts') .
-                    PHP_EOL . 'templavoila_framework.skinPath = ' . PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath($this->getExtensionName())) .
-                    PHP_EOL . 'templavoila_framework.corePath = ' . PathUtility::stripPathSitePrefix(ExtensionManagementUtility::extPath('themes_adapter_tvframework')) . 'Resources/Public/',
+                    PHP_EOL . 'templavoila_framework.skinPath = EXT:' . $this->getExtensionName() .
+                    PHP_EOL . 'templavoila_framework.corePath = EXT:themes_adapter_tvframework/Resources/Public/',
                 'config' => GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapBefore.ts'),
                 'editorcfg' => '',
                 'include_static' => '',
