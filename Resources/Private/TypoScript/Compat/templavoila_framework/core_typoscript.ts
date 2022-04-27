@@ -141,7 +141,7 @@ containerWidth {
 
 ##############################################################
 # moduleGroupSetup is the library used to load the register
-# with the various values needed by the module groups. The 
+# with the various values needed by the module groups. The
 # default values supplied by the the skins via constants
 ##############################################################
 
@@ -191,7 +191,7 @@ moduleGroupSetup.15 {
 	}
 	0 = LOAD_REGISTER
 	0 {
-		renderedModuleFooter = 
+		renderedModuleFooter =
 	}
 }
 
@@ -232,7 +232,7 @@ moduleGroupSetup.20 {
 	}
 	1 = LOAD_REGISTER
 	1 {
-		renderedModuleHeader1 = 
+		renderedModuleHeader1 =
 		renderedModuleFooter1 =
 		classModule1 = module module-1 unframed
 		moduleBodyWrapBorderWidth1 = 0
@@ -280,7 +280,7 @@ moduleGroupSetup.25 {
 	}
 	1 = LOAD_REGISTER
 	1 {
-		renderedModuleHeader2 = 
+		renderedModuleHeader2 =
 		renderedModuleFooter2 =
 		classModule2 = module module-2 unframed
 		moduleBodyWrapBorderWidth2 = 0
@@ -328,7 +328,7 @@ moduleGroupSetup.30 {
 	}
 	1 = LOAD_REGISTER
 	1 {
-		renderedModuleHeader3 = 
+		renderedModuleHeader3 =
 		renderedModuleFooter3 =
 		classModule3 = module module-3 unframed
 		moduleBodyWrapBorderWidth3 = 0
@@ -377,7 +377,7 @@ moduleGroupSetup.35 {
 	}
 	1 = LOAD_REGISTER
 	1 {
-		renderedModuleHeader4 = 
+		renderedModuleHeader4 =
 		renderedModuleFooter4 =
 		classModule4 = module module-4 unframed
 		moduleBodyWrapBorderWidth4 = 0
@@ -1519,7 +1519,7 @@ page {
 
 		# Enabled indexed search indexing.
 		index_enable = 1
-  
+
 		# Clear the cache at midnight so that scheduled content appears on time.
 		cache_clearAtMidnight = 1
 
@@ -1554,8 +1554,10 @@ page {
 
 	}
 
-	includeCSS.tf_skin_main = {$templavoila_framework.skinPath}css/mainstyles.css
-	includeCSS.tf_skin_rte = {$templavoila_framework.skinPath}css/rte.css
+	includeCSS.tf_skin_main = {$templavoila_framework.skinPath}/css/mainstyles.css
+  includeCSS.tf_skin_main_new = {$templavoila_framework.skinPath}/Resources/Public/css/mainstyles.css
+	includeCSS.tf_skin_rte = {$templavoila_framework.skinPath}/css/rte.css
+  includeCSS.tf_skin_rte_new = {$templavoila_framework.skinPath}/Resources/Public/css/rte.css
 
 	includeJS.tf_skin = {$templavoila_framework.skinPath}js/skin.js
 }
@@ -1566,7 +1568,7 @@ page {
 	includeJSlibs.tf_jquery.forceOnTop = 1
 
 	includeJS.tf_core = {$templavoila_framework.corePath}js/core.js
-	
+
 	jsInline {
 		1 = TEXT
 		1.dataWrap = jQuery.noConflict();
