@@ -1,13 +1,13 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_gridelements/Configuration/TypoScript/constants.txt">
 
 # cat=Site Constants/general/a; type=string; label=LLL:EXT:themes_adapter_tvframework/Resources/Private/Language/locallang-constants.xml:templavoila_framework.constants.siteTitle
-siteTitle =
+siteTitle = {$themes.configuration.siteName}
 
 # cat=Site Constants/general/b; type=string; label=LLL:EXT:themes_adapter_tvframework/Resources/Private/Language/locallang-constants.xml:templavoila_framework.constants.siteURL
-siteURL =
+siteURL = {$themes.configuration.baseurl}
 
 # cat=Site Constants/general/c; type=user[EXT:templavoila_framework/class.tx_templavoilaframework_pagelink.php:&tx_templavoilaframework_pagelink->main]; label=LLL:EXT:themes_adapter_tvframework/Resources/Private/Language/locallang-constants.xml:templavoila_framework.constants.siteLogo
-siteLogo =
+siteLogo = {$themes.configuration.siteSlogan}
 
 # cat=Site Constants/general/d; type=string; label=LLL:EXT:themes_adapter_tvframework/Resources/Private/Language/locallang-constants.xml:templavoila_framework.constants.copyright
 copyright = 
