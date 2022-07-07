@@ -131,13 +131,18 @@ plugin.tx_themes {
   view {
     templateRootPaths {
       400 = EXT:themes_adapter_tvframework/Resources/Private/Templates/
-      600 = EXT:skin_sbs_picturenav/fluid/
+      # better migrate the templates to ensure everything works as expected
+      600 = EXT:{$themes.name}/fluid/
     }
     layoutRootPaths {
       400 = EXT:themes_adapter_tvframework/Resources/Private/Layouts/
+      # better migrate the templates to ensure everything works as expected
+      600 = EXT:{$themes.name}/fluid/
     }
     partialRootPaths {
       400 = EXT:themes_adapter_tvframework/Resources/Private/Partials/
+      # better migrate the templates to ensure everything works as expected
+      600 = EXT:{$themes.name}/fluid/
     }
   }
 }
