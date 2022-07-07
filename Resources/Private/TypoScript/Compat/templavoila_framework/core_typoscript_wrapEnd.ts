@@ -1,5 +1,5 @@
 # add jquery library
-includeLibs.t3jquery = EXT:t3jquery/class.tx_t3jquery.php
+# includeLibs.t3jquery = EXT:t3jquery/class.tx_t3jquery.php
 
 feature = COA
 feature {
@@ -150,8 +150,12 @@ plugin.tx_themes {
 
 page {
   # add jquery to page
-  10 = USER
-  10.userFunc = tx_t3jquery->addJqJS
+  #10 = USER
+  #10.userFunc = tx_t3jquery->addJqJS
+
+  includeJS {
+    jquery = EXT:themes_adapter_tvframework/Resources/Public/js/jquery-1.7.2.min.js
+  }
 
   # header
   #20 < preCodeHeader
