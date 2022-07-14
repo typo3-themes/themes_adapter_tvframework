@@ -7,8 +7,9 @@ page.includeJSlibs.tf_jquery >
 page.includeJS.tf_core = EXT:themes_adapter_tvframework/Resources/Public/JavaScripts/core.js
 
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_adapter_tvframework/Resources/Private/TypoScript/Compat/templavoila_framework/core_typoscript.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_adapter_tvframework/Resources/Private/TypoScript/Compat/css_styled_content/setup.typoscript.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_adapter_tvframework/Resources/Private/TypoScript/Compat/css_styled_content/setup.typoscript">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_gridelements/Configuration/TypoScript/setup.txt">
+# @todo move that reference ...
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:themes_gridelements_schulcms/Configuration/TypoScript/setup.txt">
 
 page.bodyTagCObject >
