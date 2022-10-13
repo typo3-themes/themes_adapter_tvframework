@@ -43,3 +43,21 @@ page.bodyTagCObject {
   30.field = uid
   30.wrap = class="language-{$themes.languages.current.isoCodeShort} pid-|"
 }
+
+postCodeHeader = TEXT
+postCodeHeader.value =
+
+preCodeFeature = TEXT
+preCodeFeature.value =
+
+postCodeFeature = TEXT
+postCodeFeature.value =
+
+preCodeContentBlock-2 = TEXT
+preCodeContentBlock-2.value =
+
+postCodeContentBlock-2 = TEXT
+postCodeContentBlock-2.value =
+
+preCodeContentBlock-3 = TEXT
+preCodeContentBlock-3.value =
