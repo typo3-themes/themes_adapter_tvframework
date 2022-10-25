@@ -12,7 +12,9 @@ class ThemeRepositoryHook
                 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']) && array_key_exists('skins',
                 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila_framework'])) {
             foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila_framework']['skins'] as $skin) {
-                $pObj->add(new Theme($skin));
+                if (trim($skin) !== '') {
+                    $pObj->add(new Theme($skin));
+                }
             }
         }
     }
