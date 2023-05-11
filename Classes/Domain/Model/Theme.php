@@ -32,14 +32,49 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
             $this->description = $skinInfo['description'];
             $this->previewImage = 'EXT:' . str_replace('../typo3conf/ext/', '', $skinInfo['icon']);
         } else {
-            $this->previewImage = 'EXT:' . $extensionName . '/ext_icon.gif';
-            if (is_file(ExtensionManagementUtility::extPath($extensionName) . 'screenshot.gif')) {
-                $this->previewImage = 'EXT:' . $extensionName . '/screenshot.gif';
-            } elseif (is_file(ExtensionManagementUtility::extPath($extensionName) . 'screenshot.jpg')) {
-                $this->previewImage = 'EXT:' . $extensionName . '/screenshot.jpg';
-            } elseif (is_file(ExtensionManagementUtility::extPath($extensionName) . 'screenshot.png')) {
-                $this->previewImage = 'EXT:' . $extensionName . '/screenshot.png';
+            $screenshotsFolder = ExtensionManagementUtility::extPath($this->getExtensionName()) . 'Resources/Public/Screenshots/';
+            if (!is_dir($screenshotsFolder)) {
+                GeneralUtility::mkdir_deep($screenshotsFolder);
+
+                $this->previewImage = 'EXT:' . $extensionName . '/ext_icon.gif';
+
+                if (is_file(ExtensionManagementUtility::extPath($extensionName) . 'screenshot.gif')) {
+                    copy(
+                        ExtensionManagementUtility::extPath($this->getExtensionName() ). 'screenshot.gif',
+                        $screenshotsFolder . 'screenshot.gif'
+                    );
+                }
+                if (is_file(ExtensionManagementUtility::extPath($extensionName) . 'ext_icon.gif')) {
+                    copy(
+                        ExtensionManagementUtility::extPath($this->getExtensionName() ). 'ext_icon.gif',
+                        $screenshotsFolder . 'screenshot.gif'
+                    );
+                }
+                if (is_file(ExtensionManagementUtility::extPath($extensionName) . 'screenshot.jpg')) {
+                    rename(
+                        ExtensionManagementUtility::extPath($this->getExtensionName()) . 'screenshot.jpg',
+                        $screenshotsFolder . 'screenshot.jpg'
+                    );
+                }
+                if (is_file(ExtensionManagementUtility::extPath($extensionName) . 'screenshot.png')) {
+                    rename(
+                        ExtensionManagementUtility::extPath($this->getExtensionName()) . 'screenshot.png',
+                        $screenshotsFolder . 'screenshot.png'
+                    );
+                }
             }
+
+
+            if (is_file($screenshotsFolder  . 'screenshot.gif')) {
+                $this->previewImage = 'EXT:' . $this->getExtensionName() . '/Resources/Public/Screenshots/screenshot.gif';
+            }
+            if (is_file($screenshotsFolder . 'screenshot.jpg')) {
+                $this->previewImage = 'EXT:' . $this->getExtensionName() . '/Resources/Public/Screenshots/screenshot.jpg';
+            }
+            if (is_file($screenshotsFolder . 'screenshot.png')) {
+                $this->previewImage = 'EXT:' . $this->getExtensionName() . '/Resources/Public/Screenshots/screenshot.png';
+            }
+
         }
     }
 
