@@ -24,7 +24,7 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
         $path = ExtensionManagementUtility::extPath($this->getExtensionName()) . 'typoscript/';
         $this->pathTyposcript = $path . 'skin_typoscript.ts';
         $this->pathTyposcriptConstants = $path . 'skin_constants.ts';
-        $this->pathTSConfig = $path . 'skin_tsconfig.ts';
+        $this->pathTsConfig = $path . 'skin_tsconfig.ts';
 
         if (ExtensionManagementUtility::isLoaded('templavoila_framework')) {
             $skinInfo = tx_templavoilaframework_lib::getSkinInfo('EXT:' . $extensionName);
@@ -100,7 +100,7 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
         TemplateService &$pObj,
         $extensions = [],
         $features = []
-    ) {
+    ): void {
         $tvframeworkCompatBasePath = ExtensionManagementUtility::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/';
 
         // include templavoila wrapper templates, with core templates
