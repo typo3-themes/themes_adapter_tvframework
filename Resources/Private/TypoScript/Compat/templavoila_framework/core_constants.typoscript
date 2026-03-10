@@ -10,7 +10,7 @@ siteURL = {$themes.configuration.baseurl}
 siteLogo = {$themes.configuration.siteSlogan}
 
 # cat=Site Constants/general/d; type=string; label=LLL:EXT:themes_adapter_tvframework/Resources/Private/Language/locallang-constants.xml:templavoila_framework.constants.copyright
-copyright = 
+copyright =
 
 # cat=Site Constants/general/e; type=options[October 22 2010=%B %d %Y, Oct 22 2010=%b %d %Y, 22 October 2010=%d %B %Y, 22 Oct 08=%d %b %y, 10/22/08=%m/%d/%y, 22.10.2010=%d.%m.%Y]; label=LLL:EXT:themes_adapter_tvframework/Resources/Private/Language/locallang-constants.xml:templavoila_framework.constants.dateFormat
 dateFormat = %m/%d/%y
@@ -59,10 +59,10 @@ themes.languages.current.isoCodeHtml = de
 themes.languages.current.isoCodeShort = de
 themes.configuration.meta.robots = all
 themes.configuration.meta.revisitAfter = 10 days
-themes.configuration.meta.applicationName = SchulCMS
-themes.configuration.meta.defaults.abstract = 
-themes.configuration.meta.defaults.keywords = 
-themes.configuration.meta.defaults.author = 
-themes.configuration.meta.defaults.authorEmail = abuse@www.sn.schule.de
-themes.configuration.meta.defaults.description = 
+themes.configuration.meta.applicationName =
+themes.configuration.meta.defaults.abstract =
+themes.configuration.meta.defaults.keywords =
+themes.configuration.meta.defaults.author =
+themes.configuration.meta.defaults.authorEmail =
+themes.configuration.meta.defaults.description =
 themes.configuration.meta.copyright = see author

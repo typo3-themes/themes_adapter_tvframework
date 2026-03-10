@@ -107,10 +107,10 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
         $pObj->processTemplate(
             [
                 'constants' =>
-                    GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_constants.ts') .
+                    GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_constants.typoscript') .
                     PHP_EOL . 'templavoila_framework.skinPath = EXT:' . $this->getExtensionName() .
                     PHP_EOL . 'templavoila_framework.corePath = EXT:themes_adapter_tvframework/Resources/Public/',
-                'config' => GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapBefore.ts'),
+                'config' => GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapBefore.typoscript'),
                 'editorcfg' => '',
                 'include_static' => '',
                 'include_static_file' => '',
@@ -131,7 +131,7 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
         $pObj->processTemplate(
             array(
                 'constants' => '',
-                'config' => GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapEnd.ts'),
+                'config' => GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapEnd.typoscript'),
                 'editorcfg' => '',
                 'include_static' => '',
                 'include_static_file' => '',
