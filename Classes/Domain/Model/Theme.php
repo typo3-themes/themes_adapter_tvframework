@@ -2,7 +2,8 @@
 
 namespace KayStrobach\Themes\Adapter\TvFramework\Domain\Model;
 
-use TYPO3\CMS\Core\TypoScript\TemplateService;
+use TYPO3\CMS\Core\Exception\SiteNotFoundException;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\PathUtility;
@@ -80,7 +81,7 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
 
     public function getTSConfig()
     {
-        $buffer = GeneralUtility::getUrl(ExtensionManagementUtility::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/pagets.ts')
+        $buffer = @file_get_contents(ExtensionManagementUtility::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/pagets.ts')
             . "\n\n"
             . parent::getTSConfig();
         return $buffer;
@@ -95,53 +96,45 @@ class Theme extends \KayStrobach\Themes\Domain\Model\Theme
      * @param array $features
      * @return    void
      */
-    public function addTypoScriptForFe(
-        &$params,
-        TemplateService &$pObj,
-        $extensions = [],
-        $features = []
-    ): void {
-        $tvframeworkCompatBasePath = ExtensionManagementUtility::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/';
+    /**
+     * TYPO3 v12 and later: EXT:themes builds the TypoScript of the theme with buildTypoScript() and puts it
+     * into the template row (AfterTemplatesHaveBeenDeterminedEvent). The templavoila_framework emulation
+     * wraps it like the old hook addTypoScriptForFe() did: core constants and setup before, the rest after.
+     */
+    public function buildTypoScript(array $row): void
+    {
+        $alreadyBuilt = $this->constants !== '' || $this->setup !== '';
+        parent::buildTypoScript($row);
+        if ($alreadyBuilt) {
+            return;
+        }
+        $compatPath = ExtensionManagementUtility::extPath('themes_adapter_tvframework') . 'Resources/Private/TypoScript/Compat/templavoila_framework/';
+        $this->constants = (string)@file_get_contents($compatPath . 'core_constants.typoscript')
+            . PHP_EOL . 'templavoila_framework.skinPath = EXT:' . $this->getExtensionName()
+            . PHP_EOL . 'templavoila_framework.corePath = EXT:themes_adapter_tvframework/Resources/Public/'
+            // public URL of Resources/Public for raw HTML in TEXT objects, where EXT: paths are not resolved
+            . PHP_EOL . 'templavoila_framework.skinPublicPath = /' . trim(PathUtility::getPublicResourceWebPath('EXT:' . $this->getExtensionName() . '/Resources/Public/'), '/')
+            . PHP_EOL . 'siteURL = ' . $this->getSiteBasePath((int)($row['pid'] ?? 0))
+            . PHP_EOL . $this->constants;
+        $this->setup = (string)@file_get_contents($compatPath . 'core_typoscript_wrapBefore.typoscript')
+            . PHP_EOL . $this->setup
+            . PHP_EOL . (string)@file_get_contents($compatPath . 'core_typoscript_wrapEnd.typoscript');
+    }
 
-        // include templavoila wrapper templates, with core templates
-        $pObj->processTemplate(
-            [
-                'constants' =>
-                    GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_constants.typoscript') .
-                    PHP_EOL . 'templavoila_framework.skinPath = EXT:' . $this->getExtensionName() .
-                    PHP_EOL . 'templavoila_framework.corePath = EXT:themes_adapter_tvframework/Resources/Public/',
-                'config' => GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapBefore.typoscript'),
-                'editorcfg' => '',
-                'include_static' => '',
-                'include_static_file' => '',
-                'title' => 'themes_tvf_wrapBefore',
-                'uid' => md5('themes_tvf_wrapBefore')
-            ],
-            $params['idList'] . ',themes_tvf_wrapBefore',
-            $params['pid'],
-            'themes_tvf_wrapBefore',
-            $params['templateId']
-        );
-
-        // include skin ts
-        parent::addTypoScriptForFe($params, $pObj);
-
-        // include templavoila core templates
-
-        $pObj->processTemplate(
-            array(
-                'constants' => '',
-                'config' => GeneralUtility::getUrl($tvframeworkCompatBasePath . 'core_typoscript_wrapEnd.typoscript'),
-                'editorcfg' => '',
-                'include_static' => '',
-                'include_static_file' => '',
-                'title' => 'themes_tvf_wrapEnd',
-                'uid' => md5('themes_tvf_wrapEnd')
-            ),
-            $params['idList'] . ',themes_tvf_wrapEnd',
-            $params['pid'],
-            'themes_tvf_wrapEnd',
-            $params['templateId']
-        );
+    /**
+     * Base path of the site the template belongs to (e.g. "/schule/"), used for the constant "siteURL" (logo links).
+     * All sites share one domain, the old default "/" ({$themes.configuration.baseurl}) links to another site.
+     */
+    private function getSiteBasePath(int $pageId): string
+    {
+        if ($pageId <= 0) {
+            return '/';
+        }
+        try {
+            $path = GeneralUtility::makeInstance(SiteFinder::class)->getSiteByPageId($pageId)->getBase()->getPath();
+        } catch (SiteNotFoundException) {
+            return '/';
+        }
+        return '/' . trim($path, '/') . ($path === '' || trim($path, '/') === '' ? '' : '/');
     }
 }

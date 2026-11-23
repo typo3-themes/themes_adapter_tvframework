@@ -1554,12 +1554,10 @@ page {
 
 	}
 
-	includeCSS.tf_skin_main = {$templavoila_framework.skinPath}/css/mainstyles.css
-  includeCSS.tf_skin_main_new = {$templavoila_framework.skinPath}/Resources/Public/css/mainstyles.css
-	includeCSS.tf_skin_rte = {$templavoila_framework.skinPath}/css/rte.css
-  includeCSS.tf_skin_rte_new = {$templavoila_framework.skinPath}/Resources/Public/css/rte.css
+	includeCSS.tf_skin_main = {$templavoila_framework.skinPath}/Resources/Public/Css/mainstyles.css
+	includeCSS.tf_skin_rte = {$templavoila_framework.skinPath}/Resources/Public/Css/rte.css
 
-	includeJS.tf_skin = {$templavoila_framework.skinPath}js/skin.js
+	includeJS.tf_skin = {$templavoila_framework.skinPath}/Resources/Public/JavaScript/skin.js
 }
 
 [globalVar = LIT:1 = {$enableJQuery}]
