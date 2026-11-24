@@ -43,3 +43,17 @@ The framework includes `{$templavoila_framework.skinPath}/Resources/Public/Css/m
 * The TypoScript parser of v12 keeps a reference (`f1b.preCodeContent =< preCodeContent`) when a new object is
   assigned: skins clear it first (`f1b.preCodeContent >`).
 * Not yet migrated: the framework uses `<INCLUDE_TYPOSCRIPT>`, which TYPO3 v13 marks as deprecated and v14 ignores.
+
+## Tests
+
+Functional tests in docker against TYPO3 12 and 13 (gridelements has no release for TYPO3 14 yet), with the clones of
+themes and themes-gridelements next to this one (otherwise their branches from GitHub):
+
+    Build/Scripts/runTests.sh -t 12             # or 13
+    Build/Scripts/runTests.sh -a                # all supported versions
+
+`Tests/Functional/Fixtures/Extensions/skin_fixture` is a minimal skin. Covered: registration of skins, generated
+constants (`skinPath`, `skinPublicPath`, `siteURL` per site), order of framework and skin, and a page rendered through
+the framework. On TYPO3 13 the tests report the deprecated `<INCLUDE_TYPOSCRIPT>` of the framework (still to migrate
+for TYPO3 14).
+

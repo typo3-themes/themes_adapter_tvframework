@@ -1,0 +1,8 @@
+{
+    "name": "typo3-themes/skin-fixture",
+    "type": "typo3-cms-extension",
+    "description": "TemplaVoila Framework skin, test fixture of themes_adapter_tvframework",
+    "license": "GPL-2.0-or-later",
+    "require": {"typo3-themes/themes-adapter-tvframework": "*"},
+    "extra": {"typo3/cms": {"extension-key": "skin_fixture", "version": "1.0.0", "Package": {"providesPackages": {}}}}
+}
